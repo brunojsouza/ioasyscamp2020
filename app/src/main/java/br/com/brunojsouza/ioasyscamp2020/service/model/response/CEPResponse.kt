@@ -1,4 +1,4 @@
-package br.com.brunojsouza.ioasyscamp2020
+package br.com.brunojsouza.ioasyscamp2020.service.model.response
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable

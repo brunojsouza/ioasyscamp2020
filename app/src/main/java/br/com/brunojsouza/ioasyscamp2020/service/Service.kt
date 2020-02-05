@@ -1,4 +1,4 @@
-package br.com.brunojsouza.ioasyscamp2020
+package br.com.brunojsouza.ioasyscamp2020.service
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
