@@ -19,12 +19,14 @@ sealed class Either<out S, out F> {
             is Success -> fnR(b)
         }
 }
+
 //
 //// Credits to Alex Hart -> https://proandroiddev.com/kotlins-nothing-type-946de7d464fb
 //// Composes 2 functions
 fun <A, B, C> ((A) -> B).c(f: (B) -> C): (A) -> C = {
     f(this(it))
 }
+
 //
 fun <T, F, S> Either<S, F>.flatMap(fn: (S) -> Either<T, F>): Either<T, F> =
     when (this) {
@@ -41,3 +43,5 @@ typealias Result<T> = Either<T, Throwable>
 typealias Failure<T> = Either.Failure<T>
 
 typealias Success<T> = Either.Success<T>
+
+typealias Error<T> = Either.Failure<T>

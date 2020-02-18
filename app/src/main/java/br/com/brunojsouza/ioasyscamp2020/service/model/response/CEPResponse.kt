@@ -11,7 +11,7 @@ data class CEPResponse(
     @SerializedName("complemento")
     val complemento: String,
     @SerializedName("gia")
-    val gia: String,
+    val gia: String?,
     @SerializedName("ibge")
     val ibge: String,
     @SerializedName("localidade")
@@ -21,5 +21,5 @@ data class CEPResponse(
     @SerializedName("uf")
     val uf: String,
     @SerializedName("unidade")
-    val unidade: String
+    val unidade: String?
 ): Serializable

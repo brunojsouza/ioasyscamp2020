@@ -1,6 +1,7 @@
 package br.com.brunojsouza.ioasyscamp2020.ui
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -34,6 +35,10 @@ class MainActivity : AppCompatActivity() {
 //            segunga forma de formatação de texto
 //            tvAddress.text =
 //                "Rua: ${endereco.logradouro}\nBairro: ${endereco.bairro}\nCidade: ${endereco.localidade}"
+        })
+
+        viewModel.cepResponseError.observe(this, Observer {
+            Toast.makeText(this, "Message: ${it.errorCode}", Toast.LENGTH_LONG).show()
         })
     }
 }
