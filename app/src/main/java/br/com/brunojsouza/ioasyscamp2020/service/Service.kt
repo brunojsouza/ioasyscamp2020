@@ -1,5 +1,6 @@
 package br.com.brunojsouza.ioasyscamp2020.service
 
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -11,7 +12,8 @@ object Service {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
-             .client(okHttpClient.build())
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
+            .client(okHttpClient.build())
             .build()
             .create(RetrofitInterface::class.java)
     }

@@ -8,5 +8,5 @@ import retrofit2.http.Path
 
 interface RetrofitInterface {
     @GET("{cep}/json")
-    fun consultCEP(@Path("cep")cep: String): Either<CEPResponse, Throwable>
+    suspend fun consultCEP(@Path("cep")cep: String): Either<CEPResponse, Throwable>
 }

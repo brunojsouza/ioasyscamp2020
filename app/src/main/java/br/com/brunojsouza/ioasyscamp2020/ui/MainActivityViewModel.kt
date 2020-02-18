@@ -11,9 +11,12 @@ import br.com.brunojsouza.ioasyscamp2020.service.Service
 import br.com.brunojsouza.ioasyscamp2020.service.model.response.CEPResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-class MainActivityViewModel : ViewModel() {
+class MainActivityViewModel : ViewModel(), CoroutineScope {
     private val contextProvider = ThreadContextProvider()
+    override val coroutineContext: CoroutineContext
+        get() = contextProvider.io
 
     private val _cepResponse = MutableLiveData<CEPResponse>()
     val cepResponse: LiveData<CEPResponse> = _cepResponse
@@ -36,12 +39,12 @@ class MainActivityViewModel : ViewModel() {
 //    }
 
     fun consultCEP(cep: String) {
-        CoroutineScope(contextProvider.io).launch {
-            Service.retrofit.consultCEP(cep).either({ success ->{
-                _cepResponse.value = success
-            } }){
-
-            }
+        launch {
+            Service.retrofit.consultCEP(cep).either(::sucess,{} )
         }
+    }
+
+    private fun sucess(response: CEPResponse){
+        _cepResponse.value = response
     }
 }
